@@ -258,10 +258,10 @@ footer .fbrand .n span{color:var(--teal)}
 .addbtn button{width:100%;padding:11px;border-radius:11px;border:1.5px solid var(--gold);background:transparent;color:var(--gold);font:700 13.5px 'Poppins';cursor:pointer;transition:.2s}
 .addbtn button:hover,.addbtn button.added{background:var(--gold);color:#231a02}
 /* cart */
-.cartfab{position:fixed;right:20px;bottom:20px;z-index:90;background:linear-gradient(140deg,var(--teal),var(--teal-d));color:#fff;border:0;border-radius:999px;padding:15px 24px;font:700 15px 'Poppins';box-shadow:0 16px 38px rgba(7,39,46,.4);cursor:pointer;display:flex;gap:10px;align-items:center}
+.cartfab{position:fixed;right:20px;bottom:20px;z-index:997;background:linear-gradient(140deg,var(--teal),var(--teal-d));color:#fff;border:0;border-radius:999px;padding:15px 24px;font:700 15px 'Poppins';box-shadow:0 16px 38px rgba(7,39,46,.4);cursor:pointer;display:flex;gap:10px;align-items:center}
 .cartfab .bdg{background:var(--gold);color:#231a02;min-width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;padding:0 6px}
-.drawer{position:fixed;top:0;right:-430px;width:min(420px,94vw);height:100dvh;background:#fff;z-index:120;box-shadow:-20px 0 60px rgba(7,39,46,.3);transition:right .38s ease;display:flex;flex-direction:column}
-.drawer.open{right:0}
+.drawer{position:fixed;top:0;right:0;transform:translateX(110%);width:min(420px,94vw);height:100dvh;background:#fff;z-index:999;box-shadow:-20px 0 60px rgba(7,39,46,.3);transition:transform .38s ease;display:flex;flex-direction:column}
+.drawer.open{transform:none}
 .drawer .dh{background:var(--petrol);color:#fff;padding:20px 22px;display:flex;justify-content:space-between;align-items:center}
 .drawer .dh h3{color:#fff;font-size:19px}
 .drawer .dh button{background:none;border:0;color:#fff;font-size:24px;cursor:pointer}
@@ -277,12 +277,25 @@ footer .fbrand .n span{color:var(--teal)}
 .wabtn{width:100%;padding:14px;border:0;border-radius:12px;background:#22b358;color:#fff;font:700 15.5px 'Poppins';cursor:pointer;display:flex;justify-content:center;gap:9px;align-items:center}
 .wabtn:hover{background:#1a9448}
 .dempty{text-align:center;color:var(--mut);padding:38px 10px;font-size:15px}
-.scrim{position:fixed;inset:0;background:rgba(4,24,29,.55);z-index:110;opacity:0;pointer-events:none;transition:.3s}
+.scrim{position:fixed;inset:0;background:rgba(4,24,29,.55);z-index:998;opacity:0;pointer-events:none;transition:.3s}
 .scrim.on{opacity:1;pointer-events:auto}
 .tilt{transform-style:preserve-3d;transition:transform .35s ease, box-shadow .35s ease}
 .tilt:hover{transform:perspective(900px) rotateX(3deg) rotateY(-3deg) translateY(-6px)}
 .wave{display:block;width:100%;height:56px;margin-bottom:-1px}
 @media(max-width:760px){ .slider{min-height:82vh} .sarr{display:none} .pvis{height:140px} }
+
+.addbtn{display:flex;gap:10px;align-items:stretch}
+.qrow{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:11px;overflow:hidden;background:#fff}
+.qbtn{width:32px;border:0;background:var(--sand);font-size:17px;font-weight:700;color:var(--petrol);cursor:pointer;line-height:1}
+.qbtn:active{background:#e7ddc8}
+.qin{width:46px;border:0;text-align:center;font:700 14.5px 'Inter';color:var(--ink);padding:9px 0;-moz-appearance:textfield;appearance:textfield}
+.qin::-webkit-outer-spin-button,.qin::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.addb2{flex:1;border:0;border-radius:11px;background:linear-gradient(140deg,var(--teal),var(--teal-d));color:#fff;font:600 14px 'Poppins';cursor:pointer;padding:10px 8px}
+.addb2.added{background:#22b358}
+.fcard .addbtn{margin-top:14px}
+.dsum{font:600 13.5px 'Poppins';color:var(--petrol);background:#fff;border:1.5px dashed var(--gold);border-radius:10px;padding:9px 12px;margin-bottom:11px;text-align:center}
+.dsum:empty{display:none}
+.clrbtn{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:8px;font:600 12px 'Poppins';padding:6px 10px;cursor:pointer;margin-right:8px}
 </style>
 </head>
 <body>
@@ -446,22 +459,22 @@ footer .fbrand .n span{color:var(--teal)}
     <div class="fcard rv tilt">
       <div class="ph" data-photo="curit"></div>
       <div class="bd"><span class="tag">Dental Care</span><h3>Curit Toothache Drops</h3>
-      <p>The classic toothache remedy — camphor, clove oil, menthol and cajuput oil for fast relief. 10 ml drops.</p></div>
+      <p>The classic toothache remedy — camphor, clove oil, menthol and cajuput oil for fast relief. 10 ml drops.</p><div class="addbtn"><div class="qrow"><button class="qbtn" onclick="qStep(this,-1)" aria-label="Decrease quantity">−</button><input class="qin" type="number" value="1" min="1" max="999" inputmode="numeric" aria-label="Quantity"><button class="qbtn" onclick="qStep(this,1)" aria-label="Increase quantity">+</button></div><button class="addb2" onclick="addToCart(95,this)">+ Add to Order</button></div></div>
     </div>
     <div class="fcard rv tilt">
       <div class="ph" data-photo="carminate"></div>
       <div class="bd"><span class="tag">Digestive Care</span><h3>Carminate Mixture</h3>
-      <p>The trusted carminative mixture for indigestion and dyspepsia — a Sharex staple for generations of families.</p></div>
+      <p>The trusted carminative mixture for indigestion and dyspepsia — a Sharex staple for generations of families.</p><div class="addbtn"><div class="qrow"><button class="qbtn" onclick="qStep(this,-1)" aria-label="Decrease quantity">−</button><input class="qin" type="number" value="1" min="1" max="999" inputmode="numeric" aria-label="Quantity"><button class="qbtn" onclick="qStep(this,1)" aria-label="Increase quantity">+</button></div><button class="addb2" onclick="addToCart(39,this)">+ Add to Order</button></div></div>
     </div>
     <div class="fcard rv tilt">
       <div class="ph" data-photo="falcipar"></div>
       <div class="bd"><span class="tag">Anti-Malarial</span><h3>Falcipar Suspension</h3>
-      <p>Sulfadoxine + Pyrimethamine anti-malarial suspension, 15 ml — dependable protection where malaria strikes.</p></div>
+      <p>Sulfadoxine + Pyrimethamine anti-malarial suspension, 15 ml — dependable protection where malaria strikes.</p><div class="addbtn"><div class="qrow"><button class="qbtn" onclick="qStep(this,-1)" aria-label="Decrease quantity">−</button><input class="qin" type="number" value="1" min="1" max="999" inputmode="numeric" aria-label="Quantity"><button class="qbtn" onclick="qStep(this,1)" aria-label="Increase quantity">+</button></div><button class="addb2" onclick="addToCart(44,this)">+ Add to Order</button></div></div>
     </div>
     <div class="fcard rv tilt">
       <div class="ph" data-photo="mclon"></div>
       <div class="bd"><span class="tag">Injectables</span><h3>M-Clon Injection</h3>
-      <p>Metoclopramide HCl 10 mg/ml sterile injection — hospital-trusted anti-emetic care, made at Sadiqabad.</p></div>
+      <p>Metoclopramide HCl 10 mg/ml sterile injection — hospital-trusted anti-emetic care, made at Sadiqabad.</p><div class="addbtn"><div class="qrow"><button class="qbtn" onclick="qStep(this,-1)" aria-label="Decrease quantity">−</button><input class="qin" type="number" value="1" min="1" max="999" inputmode="numeric" aria-label="Quantity"><button class="qbtn" onclick="qStep(this,1)" aria-label="Increase quantity">+</button></div><button class="addb2" onclick="addToCart(61,this)">+ Add to Order</button></div></div>
     </div>
   </div>
   <div class="pop rv">
@@ -769,7 +782,7 @@ function render(){
   const list = P.map((x,i)=>[x,i]).filter(([x]) => (curCat==="All" || x[2]===curCat) && (!q || (x[0]+' '+x[1]).toLowerCase().includes(q)));
   pcount.textContent = 'Showing ' + list.length + ' of ' + P.length + ' products' + (curCat!=="All" ? ' · ' + curCat : '');
   pgrid.innerHTML = list.length
-    ? list.map(([x,i])=>'<div class="pitem">'+visFor(x)+'<div class="inner"><h4>'+x[0]+'</h4><div class="f">'+x[1]+'</div><span class="c">'+x[2]+'</span><div class="addbtn"><button onclick="addToCart('+i+',this)">+ Add to Order</button></div></div></div>').join('')
+    ? list.map(([x,i])=>'<div class="pitem">'+visFor(x)+'<div class="inner"><h4>'+x[0]+'</h4><div class="f">'+x[1]+'</div><span class="c">'+x[2]+'</span><div class="addbtn"><div class="qrow"><button class="qbtn" onclick="qStep(this,-1)" aria-label="Decrease quantity">−</button><input class="qin" type="number" value="1" min="1" max="999" inputmode="numeric" aria-label="Quantity"><button class="qbtn" onclick="qStep(this,1)" aria-label="Increase quantity">+</button></div><button class="addb2" onclick="addToCart('+i+',this)">+ Add to Order</button></div></div></div>').join('')
     : '<div class="nores" style="grid-column:1/-1">No product matches your search. Try a brand name (e.g. “Pyrofen”) or an ingredient (e.g. “Diclofenac”).</div>';
 }
 pq.addEventListener('input', render);
@@ -783,7 +796,47 @@ document.querySelectorAll('.cat[data-cat]').forEach(t=>{
   });
 });
 
+/* ── Order cart + WhatsApp checkout ── */
+const WA_NUMBER = '923008671514';
+let cart = {};
+function openCart(){ document.getElementById('drawer').classList.add('open'); document.getElementById('scrim').classList.add('on'); }
+function closeCart(){ document.getElementById('drawer').classList.remove('open'); document.getElementById('scrim').classList.remove('on'); }
+function cartCount(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
+function drawCart(){
+  const cn = document.getElementById('cartn'); if(cn) cn.textContent = cartCount();
+  const box = document.getElementById('ditems'); if(!box) return;
+  const keys = Object.keys(cart);
+  const ds = document.getElementById('dsum'); if(ds) ds.textContent = keys.length ? ('🧾 Total: ' + cartCount() + ' item(s) · ' + keys.length + ' product(s)') : '';
+  if(!keys.length){ box.innerHTML = '<div class="dempty">🛒 Your order list is empty.<br><br>Browse the Product Explorer and tap<br><b>“+ Add to Order”</b> on any product.</div>'; return; }
+  box.innerHTML = keys.map(k=>{ const x = P[+k]; return '<div class="ditem"><div class="dn"><b>'+x[0]+'</b><span>'+x[1]+'</span></div><div class="qty"><button onclick="chQty('+k+',-1)">−</button><b>'+cart[k]+'</b><button onclick="chQty('+k+',1)">+</button></div><button class="rm" onclick="rmItem('+k+')" title="Remove">✕</button></div>'; }).join('');
+}
+function qStep(btn, d){ const inp = btn.parentNode.querySelector('.qin'); let v = (parseInt(inp.value)||1) + d; v = Math.max(1, Math.min(999, v)); inp.value = v; }
+function clearCart(){ cart = {}; drawCart(); }
+function addToCart(i, btn){
+  let q = 1;
+  if(btn){ const card = btn.closest('.pitem,.fcard'); const inp = card ? card.querySelector('.qin') : null; if(inp) q = Math.max(1, Math.min(999, parseInt(inp.value)||1)); }
+  cart[i] = (cart[i]||0) + q; drawCart();
+  if(btn){ const old = btn.textContent; btn.classList.add('added'); btn.textContent = '✔ Added to Order'; setTimeout(()=>{ btn.classList.remove('added'); btn.textContent = old; }, 1100); }
+  const f = document.getElementById('cartfab'); f.style.transform = 'scale(1.1)'; setTimeout(()=>f.style.transform='', 200);
+}
+function chQty(i, d){ cart[i] += d; if(cart[i] <= 0) delete cart[i]; drawCart(); }
+function rmItem(i){ delete cart[i]; drawCart(); }
+function sendOrder(){
+  const keys = Object.keys(cart);
+  const ds = document.getElementById('dsum'); if(ds) ds.textContent = keys.length ? ('🧾 Total: ' + cartCount() + ' item(s) · ' + keys.length + ' product(s)') : '';
+  if(!keys.length){ alert('Please add at least one product to your order first.'); return; }
+  const nm = document.getElementById('oname').value.trim(), ph = document.getElementById('ophone').value.trim(), ad = document.getElementById('oaddr').value.trim();
+  if(!nm || !ph){ alert('Please enter your name and phone number so we can confirm your order.'); return; }
+  const nt = document.getElementById('onote').value.trim();
+  let msg = '🛒 *New Order — Sharex Laboratories Website*\n\n';
+  keys.forEach((k,idx)=>{ const x = P[+k]; msg += (idx+1) + '. *' + x[0] + '*\n    ' + x[1] + '\n    Qty: ' + cart[k] + '\n'; });
+  msg += '\n— Customer Details —\nName: ' + nm + '\nPhone: ' + ph + (ad ? '\nAddress: ' + ad : '') + (nt ? '\nNote: ' + nt : '') + '\nTotal items: ' + cartCount();
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+}
+document.addEventListener('DOMContentLoaded', drawCart);
+
 /* ── Counters ── */
+if('IntersectionObserver' in window){
 const io = new IntersectionObserver(es=>es.forEach(e=>{
   if(!e.isIntersecting) return;
   const el = e.target, end = +el.dataset.count, t0 = performance.now();
@@ -795,6 +848,7 @@ document.querySelectorAll('[data-count]').forEach(el=>io.observe(el));
 /* ── Reveal on scroll ── */
 const io2 = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io2.unobserve(e.target);} }), {threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io2.observe(el));
+} else { document.querySelectorAll('[data-count]').forEach(el=>{ el.textContent = el.dataset.count; }); document.querySelectorAll('.rv').forEach(el=>el.classList.add('in')); }
 
 /* ── Mobile menu + form ── */
 document.getElementById('burger').onclick = ()=>document.getElementById('menu').classList.toggle('open');
@@ -823,49 +877,20 @@ document.getElementById('cform').addEventListener('submit', e=>{ e.preventDefaul
   restart();
 })();
 
-/* ── Order cart + WhatsApp checkout ── */
-const WA_NUMBER = '923008671514';
-let cart = {};
-const drawer = document.getElementById('drawer'), scrim = document.getElementById('scrim');
-function openCart(){ drawer.classList.add('open'); scrim.classList.add('on'); }
-function closeCart(){ drawer.classList.remove('open'); scrim.classList.remove('on'); }
-function cartCount(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
-function drawCart(){
-  document.getElementById('cartn').textContent = cartCount();
-  const box = document.getElementById('ditems');
-  const keys = Object.keys(cart);
-  if(!keys.length){ box.innerHTML = '<div class="dempty">🛒 Your order list is empty.<br><br>Browse the Product Explorer and tap<br><b>“+ Add to Order”</b> on any product.</div>'; return; }
-  box.innerHTML = keys.map(k=>{ const x = P[+k]; return '<div class="ditem"><div class="dn"><b>'+x[0]+'</b><span>'+x[1]+'</span></div><div class="qty"><button onclick="chQty('+k+',-1)">−</button><b>'+cart[k]+'</b><button onclick="chQty('+k+',1)">+</button></div><button class="rm" onclick="rmItem('+k+')" title="Remove">✕</button></div>'; }).join('');
-}
-function addToCart(i, btn){
-  cart[i] = (cart[i]||0) + 1; drawCart();
-  if(btn){ const old = btn.textContent; btn.classList.add('added'); btn.textContent = '✔ Added to Order'; setTimeout(()=>{ btn.classList.remove('added'); btn.textContent = old; }, 1100); }
-  const f = document.getElementById('cartfab'); f.style.transform = 'scale(1.1)'; setTimeout(()=>f.style.transform='', 200);
-}
-function chQty(i, d){ cart[i] += d; if(cart[i] <= 0) delete cart[i]; drawCart(); }
-function rmItem(i){ delete cart[i]; drawCart(); }
-function sendOrder(){
-  const keys = Object.keys(cart);
-  if(!keys.length){ alert('Please add at least one product to your order first.'); return; }
-  const nm = document.getElementById('oname').value.trim(), ph = document.getElementById('ophone').value.trim(), ad = document.getElementById('oaddr').value.trim();
-  if(!nm || !ph){ alert('Please enter your name and phone number so we can confirm your order.'); return; }
-  let msg = '🛒 *New Order — Sharex Laboratories Website*\n\n';
-  keys.forEach((k,idx)=>{ const x = P[+k]; msg += (idx+1) + '. *' + x[0] + '*\n    ' + x[1] + '\n    Qty: ' + cart[k] + '\n'; });
-  msg += '\n— Customer Details —\nName: ' + nm + '\nPhone: ' + ph + (ad ? '\nAddress: ' + ad : '');
-  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
-}
-drawCart();
+
 </script>
 <!-- ══════════ ORDER CART ══════════ -->
 <button class="cartfab" id="cartfab" onclick="openCart()">🛒 My Order <span class="bdg" id="cartn">0</span></button>
 <div class="scrim" id="scrim" onclick="closeCart()"></div>
 <aside class="drawer" id="drawer" aria-label="Order cart">
-  <div class="dh"><h3>🛒 Your Order</h3><button onclick="closeCart()" aria-label="Close">✕</button></div>
+  <div class="dh"><h3>🛒 Your Order</h3><span><button class="clrbtn" onclick="clearCart()">Clear all</button><button onclick="closeCart()" aria-label="Close">✕</button></span></div>
   <div class="ditems" id="ditems"></div>
   <div class="dform">
+    <div class="dsum" id="dsum"></div>
     <input id="oname" type="text" placeholder="Your name *">
     <input id="ophone" type="tel" placeholder="Your phone / WhatsApp number *">
     <textarea id="oaddr" rows="2" placeholder="City &amp; complete address (for delivery)"></textarea>
+    <textarea id="onote" rows="2" placeholder="Note for the company (optional) — e.g. urgent, pack size, delivery time"></textarea>
     <button class="wabtn" onclick="sendOrder()">💬 Place Order on WhatsApp</button>
     <p style="font-size:12.5px;color:var(--mut);margin-top:9px;text-align:center">Your order opens in WhatsApp, addressed to Sharex Laboratories — just press send there.</p>
   </div>
